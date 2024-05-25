@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search H&E</title>
+    <link rel="icon" href="{% static 'logo.png' %}">
+    <style>
+       body {
+           margin: 0;
+           padding: 0;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           height: 100vh;
+           background-color: #ffffff;
+       }
+
+       .title {
+           font-size: 46px;
+           color: 	#328cc1;
+       }
+       
+      .subheading {
+           font-family: sans-serif;
+           font-size: 15px;
+           color: #1d2731;
+       }
+
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .button-container button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color:#083c5d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: #d98310;
+        }
+
+        .back-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #002a56;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #747474;
+        }
+        
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            margin: 20px;
+        }
+        </style>
+</head>
+<body>
+    <img class="logo" src="{% static 'logo.png' %}" alt="A beautiful image">
+    <h1 class="title">Search H&E Image in database</h1>
+    <p class="subheading">Enter the details of the file you want to search:</p>
+
+
+    <form action="{% url 'search_HandE' %}" method="GET">
+        <input type="text" name="q" placeholder="Search by file name">
+        <input type="text" name="upload_code" placeholder="Enter Upload Code">
+        <button class= "button-container" type="submit">Search</button>
+    </form>
+
+
+    <ul>
+        {% for file in files %}
+        <li>{{ file.zip_file.name }} <a href="{% url 'download_file_HandE' file_name=file.zip_file.name %}">Download</a></li>
+        {% endfor %}
+
+    <a href="/HandE" class="back-button">Back to H&E Options Page</a>
+</body>
+</html>
+
+

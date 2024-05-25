@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WSI</title>
+    <link rel="icon" href="{% static 'logo.png' %}">
+    <style>
+       body {
+           margin: 0;
+           padding: 0;
+           display: flex;
+           flex-direction: column;
+           align-items: center;
+           justify-content: center;
+           height: 100vh;
+           background-color: #ffffff;
+       }
+
+       .title {
+           font-size: 46px;
+           color: 	#328cc1;
+       }
+       
+      .subheading {
+           font-family: sans-serif;
+           font-size: 15px;
+           color: #1d2731;
+       }
+
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 60px;
+        }
+
+        .button-container button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color:#083c5d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: #d98310;
+        }
+
+        .back-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #002a56;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #747474;
+        }
+        
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+    <img class="logo" src="{% static 'logo.png' %}" alt="A beautiful image">
+    <h1 class="title">WSI Image</h1>
+    <p class="subheading">WSI Image edit options:</p>
+    
+    <div class="button-container">
+        <a href="/add_WSI"><button>Add WSI Image to database</button></a>
+        <a href="/delete_WSI"><button>Delete WSI Image from database</button></a>
+        <a href="/search_WSI"><button>Search for WSI Images in database</button></a>
+        <a href="/generate_patches"><button>Generate Patches using existing WSI</button></a>
+    </div>
+    <a href="/options_page" class="back-button">Back to Options Page</a>
+</body>
+</html>
+

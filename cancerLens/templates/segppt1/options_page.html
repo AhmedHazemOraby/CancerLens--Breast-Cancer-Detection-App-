@@ -1,0 +1,80 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome, Admin</title>
+    <link rel="icon" href="{% static 'logo.png' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffffff;
+        }
+
+        .title {
+            font-size: 46px;
+            color: 	#328cc1;
+        }
+        
+       .subheading {
+            font-family: sans-serif;
+            font-size: 15px;
+            color: #1d2731;
+        }
+
+
+        .button-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .button-container button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #083c5d;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .button-container button:hover {
+            background-color: #d98310;
+        }
+
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            margin: 20px;
+        }
+    </style>
+</head>
+<body>
+<img class="logo" src="{% static 'logo.png' %}" alt="A beautiful image">
+<h1 class="title">Welcome, Admin</h1>
+<p class="subheading">What Image would you like to change?</p>
+
+    <div class="button-container">
+        <a href="/WSI"><button>Whole Slide Image(WSI)</button></a>
+        <a href="/HandE"><button>H&E stained Images</button></a>
+        <a href="/IHC"><button>IHC stained Images</button></a>
+        <a href="/tumorMask"><button>Tumor Mask Image</button></a>
+        <a href="/predict_tumor"><button>Tumor Prediction</button></a>
+    </div>
+
+</body>
+</html>

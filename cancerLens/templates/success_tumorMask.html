@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Success!</title>
+   <link rel="icon" href="{% static 'logo.png' %}">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #ffffff;
+        }
+
+        .title {
+            font-size: 46px;
+            color: 	#328cc1;
+        }
+        
+       .subheading {
+            font-family: sans-serif;
+            font-size: 15px;
+            color: #1d2731;
+        }
+        .container {
+            display: flex;
+            width: 80%;
+            justify-content: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .text-input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .add-button {
+            width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .add-button:hover {
+            background-color: #0056b3;
+        }
+
+        .back-button {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            text-decoration: none;
+            color: #fff;
+            background-color: #002a56;
+            padding: 8px 16px;
+            border: none;
+            border-radius: 5px;
+        }
+
+        .back-button:hover {
+            background-color: #747474;
+        }
+        
+        .logo {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 50px;
+            height: 50px;
+            margin: 20px;
+        }
+       
+        .success {
+            font-family: sans-serif;
+            font-size: 18px;
+            color: #5B9E17;
+        }
+        
+       .successful-upload {
+           text-align: center;
+           padding: 8px 16px;
+       }
+    </style>
+</head>
+<body>
+    <img class="logo" src="{% static 'logo.png' %}" alt="A beautiful image">
+    <h1 class="title">Add Tumor Mask Image</h1>
+    <p class="subheading">Fill out the details below to add Tumor Mask Image to database</p>
+    
+    <div class="container">
+        <div>
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="mask_name" class="text-input" placeholder="Tumor Mask Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="corres_slide_name" class="text-input" placeholder="Corresponding Slide Name">
+                </div>
+                <div class="form-group">
+                    <input type="text" name="corres_slide_number" class="text-input" placeholder="Corresponding Slide Number">
+                </div>
+                
+                <div class="form-group">
+                <label for="id_zip_file">Upload Tumor Mask Slide Patches</label>
+                
+                    <!-- Upload box goes here -->
+                    <input type="file" name="zip_file" id="id_zip_file" accept=".zip">
+                </div>
+                <button type="submit" class="add-button">Add to Database</button> 
+                <div class="successful-upload">
+                
+                
+                <p1 class="success" >Upload Successful!</p1>
+                 {% if unique_code %}
+                     <p>Your unique code: {{ unique_code }}</p>
+                 {% endif %}
+                 <p>Uploaded Zip File: {{ zip_file_instance.zip_file.name }}</p>
+                </div>
+            </form>
+        </div>
+    </div>
+  <a href="/tumorMask" class="back-button">Back to Tumor Mask Image Options</a>
+</body>
+</html>
+
